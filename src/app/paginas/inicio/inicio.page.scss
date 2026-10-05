@@ -1,0 +1,331 @@
+.fondo {
+  --background: #f5f5f7;
+}
+
+.contenedor {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 16px;
+  padding-bottom: 90px;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  ion-icon {
+    font-size: 28px;
+    color: #111;
+  }
+}
+
+/* ==========================
+   VEHICULO
+========================== */
+
+.tarjeta-vehiculo {
+  position: relative;
+  min-height: 120px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .texto {
+    width: 55%;
+    z-index: 2;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1;
+    font-weight: 800;
+    color: #111;
+  }
+
+  p {
+    margin: 8px 0 0;
+    font-size: 15px;
+    color: #666;
+  }
+
+  img {
+    position: absolute;
+    right: -10px;
+    bottom: -5px;
+
+    width: 52%;
+    max-width: 220px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(
+      0 10px 15px rgba(0, 0, 0, 0.18)
+    );
+  }
+}
+
+/* ==========================
+   TARJETA GASTOS
+========================== */
+
+.tarjeta-blanca {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 16px;
+
+  margin-bottom: 16px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08);
+
+  .etiqueta {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+  }
+}
+
+.contenido-gastos {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.estadistica {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.variacion {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1aa947;
+}
+
+.variacion.negativo {
+  color: #dc2626;
+}
+
+.subtexto {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* ==========================
+   GRAFICO
+========================== */
+
+.mini-grafico {
+  display: flex;
+  align-items: flex-end;
+
+  gap: 6px;
+
+  height: 60px;
+
+  flex: 1;
+
+  max-width: 170px;
+}
+
+.barra {
+  flex: 1;
+
+  background: #dddddd;
+
+  border-radius: 4px 4px 0 0;
+
+  transition: 0.2s;
+}
+
+.barra.activa {
+  background: #4338ca;
+}
+
+/* ==========================
+   ACCESOS
+========================== */
+
+.grilla-accesos {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 16px;
+}
+
+.acceso {
+  height: 95px;
+
+  background: white;
+
+  border: none;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08);
+
+  transition: 0.15s;
+
+  ion-icon {
+    font-size: 24px;
+    color: #111;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ==========================
+   MANTENIMIENTO
+========================== */
+
+.tarjeta-mantenimiento {
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.icono-wrap {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+
+  background: #ffd54f;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 22px;
+    color: #111;
+  }
+}
+
+.info {
+  flex: 1;
+}
+
+.encabezado-mantenimiento {
+  display: block;
+
+  font-size: 12px;
+
+  color: #666;
+}
+
+.titulo {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #111;
+}
+
+.subtitulo {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 12px;
+
+  color: #666;
+}
+
+ion-button {
+  --background: #4338ca;
+
+  --border-radius: 10px;
+
+  font-size: 12px;
+
+  text-transform: none;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 390px) {
+
+  .tarjeta-vehiculo {
+
+    h3 {
+      font-size: 28px;
+    }
+
+    img {
+      width: 48%;
+    }
+  }
+
+  .acceso {
+    height: 88px;
+  }
+}

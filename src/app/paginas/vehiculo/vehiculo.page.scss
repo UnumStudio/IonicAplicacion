@@ -1,0 +1,102 @@
+.fondo {
+  --background: #f5f5f7;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: clamp(12px, 4vw, 20px);
+  padding-bottom: 90px;
+  box-sizing: border-box;
+}
+
+.titulo-pagina {
+  font-size: clamp(20px, 5vw, 26px);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.tarjeta-foto {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+
+  img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.placa {
+  background: #16151a;
+  border-radius: 16px;
+  padding: clamp(14px, 4vw, 18px);
+  margin-bottom: 20px;
+}
+
+.placa-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  .pais {
+    color: #ffffff;
+    font-size: clamp(10px, 2.8vw, 12px);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .bandera {
+    font-size: 16px;
+  }
+}
+
+.patente {
+  display: block;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: clamp(10px, 3vw, 14px);
+  font-size: clamp(28px, 8vw, 40px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #16151a;
+}
+
+.subtitulo {
+  font-size: clamp(15px, 4vw, 17px);
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.lista-documentos {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .contenedor {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .contenedor {
+    max-width: 720px;
+    padding-top: 32px;
+  }
+
+  .tarjeta-foto img {
+    max-width: 380px;
+  }
+
+  .lista-documentos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 16px;
+  }
+}

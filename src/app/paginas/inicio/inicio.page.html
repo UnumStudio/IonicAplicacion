@@ -1,13 +1,158 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Header -->
+    <div class="encabezado">
+      <h2>Hola, {{ nombreUsuario }} 👋</h2>
+
+      <a routerLink="/paginas/perfil">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </a>
+    </div>
+
+    <!-- Vehículo -->
+    <div
+      class="tarjeta-vehiculo"
+      routerLink="/paginas/vehiculo">
+
+      <div class="texto">
+        <h3>Mi vehículo</h3>
+
+        <p>
+          {{ vehiculo.marca }}
+          {{ vehiculo.modelo }}
+          {{ vehiculo.anio }}
+        </p>
+      </div>
+
+      <img
+        [src]="vehiculo.fotoUrl"
+        [alt]="vehiculo.marca + ' ' + vehiculo.modelo" />
+
+    </div>
+
+    <!-- Gastos -->
+    <div class="tarjeta-blanca">
+
+      <span class="etiqueta">
+        Gastos del mes
+      </span>
+
+      <h2>
+        ${{ montoFormateado }}
+      </h2>
+
+      <div class="contenido-gastos">
+
+        <div class="mini-grafico">
+          <div
+            *ngFor="let altura of barrasGastos; let i = index"
+            class="barra"
+            [class.activa]="i === barrasGastos.length - 2"
+            [style.height.%]="altura * 100">
+          </div>
+        </div>
+
+        <div class="estadistica">
+
+          <span
+            class="variacion"
+            [class.negativo]="variacionMesAnterior < 0">
+
+            {{ variacionMesAnterior > 0 ? '+' : '' }}{{ variacionMesAnterior }}%
+
+          </span>
+
+          <span class="subtexto">
+            VS MES PASADO
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="grilla-accesos">
+
+      <!-- Nafta -->
+      <button
+        class="acceso"
+        routerLink="/paginas/gastos">
+
+        <ion-icon name="car-outline"></ion-icon>
+        <span>Nafta</span>
+
+      </button>
+
+      <!-- Mantenimiento -->
+      <button
+        class="acceso"
+        routerLink="/paginas/gastos">
+
+        <ion-icon name="build-outline"></ion-icon>
+        <span>Mantenimiento</span>
+
+      </button>
+
+      <!-- Lavaderos -->
+      <button
+        class="acceso"
+        routerLink="/paginas/mapa">
+
+        <ion-icon name="sparkles-outline"></ion-icon>
+        <span>Lavaderos</span>
+
+      </button>
+
+      <!-- Talleres -->
+      <button
+        class="acceso"
+        routerLink="/paginas/mapa">
+
+        <ion-icon name="construct-outline"></ion-icon>
+        <span>Talleres</span>
+
+      </button>
+
+    </div>
+
+    <!-- Próximo mantenimiento -->
+    <div class="tarjeta-mantenimiento">
+
+      <div class="icono-wrap">
+        <ion-icon name="warning-outline"></ion-icon>
+      </div>
+
+      <div class="info">
+
+        <span class="encabezado-mantenimiento">
+          Próximo mantenimiento
+        </span>
+
+        <span class="titulo">
+          {{ proximoMantenimiento.titulo }}
+        </span>
+
+        <span class="subtitulo">
+          En {{ proximoMantenimiento.diasRestantes }} días
+        </span>
+
+      </div>
+
+      <ion-button
+        size="small"
+        routerLink="/paginas/vehiculo">
+
+        Ver detalle
+
+      </ion-button>
+
+    </div>
+
+  </div>
+
+  <app-barra-navegacion></app-barra-navegacion>
+
 </ion-content>

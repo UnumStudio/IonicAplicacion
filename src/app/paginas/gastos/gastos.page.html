@@ -1,13 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>gastos</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">gastos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="encabezado">
+      <h2>Gastos</h2>
+      <ion-button size="small" routerLink="/paginas/agregar-gasto">
+        <ion-icon slot="start" name="add-outline"></ion-icon>
+        Agregar gastos
+      </ion-button>
+    </div>
+
+    <div class="fila-filtros">
+      <button
+        *ngFor="let filtro of filtros"
+        class="chip-filtro"
+        [class.activo]="filtroActivo === filtro.valor"
+        (click)="seleccionarFiltro(filtro.valor)"
+      >
+        {{ filtro.etiqueta }}
+      </button>
+    </div>
+
+    <div class="lista-gastos">
+      <app-tarjeta-gasto
+        *ngFor="let gasto of gastosFiltrados"
+        [gasto]="gasto"
+      ></app-tarjeta-gasto>
+
+      <p class="vacio" *ngIf="gastosFiltrados.length === 0">
+        No hay gastos en esta categoría todavía.
+      </p>
+    </div>
+
+  </div>
+
+  <app-barra-navegacion></app-barra-navegacion>
 </ion-content>

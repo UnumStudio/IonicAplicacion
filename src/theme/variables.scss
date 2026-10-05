@@ -1,2 +1,41 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+:root {
+  --app-primary: #1E2A63;
+  --app-primary-rgb: 30, 42, 99;
+  --app-primary-tint: #2E3B7C;
+  --app-primary-shade: #161E49;
+
+  --app-bg: #F5F5F7;
+  --app-card-bg: #FFFFFF;
+  --app-card-shadow: 0 4px 16px rgba(20, 20, 40, 0.06);
+  --app-radius-lg: 24px;
+  --app-radius-md: 18px;
+  --app-radius-sm: 12px;
+
+  --app-text-primary: #17171C;
+  --app-text-secondary: #8E8E93;
+  --app-text-tertiary: #B4B4BA;
+
+  --app-success: #34C759;
+  --app-success-bg: #E7F9EC;
+
+  --app-fuel-bg: #EDE9FE;
+  --app-fuel-icon: #7C3AED;
+  --app-maint-bg: #FEF3C7;
+  --app-maint-icon: #D97706;
+  --app-insurance-bg: #DBEAFE;
+  --app-insurance-icon: #2563EB;
+
+  --app-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --ion-font-family: var(--app-font);
+  --ion-background-color: var(--app-bg);
+  --ion-text-color: var(--app-text-primary);
+  --ion-color-primary: #1E2A63;
+  --ion-color-primary-rgb: 30, 42, 99;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1a2557;
+  --ion-color-primary-tint: #343f73;
+}

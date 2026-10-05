@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>mapa</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="fondo-mapa">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mapa</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="capa-superior">
+    <div class="buscador">
+      <ion-icon name="search-outline"></ion-icon>
+      <input
+        type="text"
+        placeholder="Buscar servicio..."
+        [(ngModel)]="textoBusqueda"
+      />
+    </div>
+
+    <div class="fila-categorias">
+      <button
+        *ngFor="let cat of categorias"
+        class="chip-categoria"
+        [class.activo]="categoriaActiva === cat.valor"
+        (click)="seleccionarCategoria(cat.valor)"
+      >
+        {{ cat.etiqueta }}
+      </button>
+    </div>
+  </div>
+
+  <div id="mapa-leaflet"></div>
+
+  <app-barra-navegacion></app-barra-navegacion>
 </ion-content>

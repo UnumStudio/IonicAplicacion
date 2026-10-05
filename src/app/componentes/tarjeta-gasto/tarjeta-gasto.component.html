@@ -1,0 +1,10 @@
+<div class="tarjeta-gasto">
+  <div class="icono-wrap" [style.background]="colorFondo">
+    <ion-icon [name]="icono"></ion-icon>
+  </div>
+  <div class="info">
+    <span class="titulo">{{ gasto.titulo }}</span>
+    <span class="fecha">{{ fechaFormateada }}</span>
+  </div>
+  <span class="monto">${{ montoFormateado }}</span>
+</div>

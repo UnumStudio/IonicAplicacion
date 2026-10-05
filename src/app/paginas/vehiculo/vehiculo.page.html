@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>vehiculo</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">vehiculo</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <h2 class="titulo-pagina">Vehículo Detallado</h2>
+
+    <div class="tarjeta-foto">
+      <img [src]="vehiculo.fotoUrl" [alt]="vehiculo.modelo" />
+    </div>
+
+    <!-- Placa estilo cédula -->
+    <div class="placa">
+      <div class="placa-encabezado">
+        <span class="pais">REPUBLICA ARGENTINA</span>
+        <span class="bandera">🇦🇷</span>
+      </div>
+      <span class="patente">{{ patenteFormateada }}</span>
+    </div>
+
+    <h3 class="subtitulo">Identificación Legal</h3>
+
+    <div class="lista-documentos">
+      <app-tarjeta-documento
+        *ngFor="let doc of documentos"
+        [documento]="doc"
+        (verDocumento)="abrirDocumento($event)"
+      ></app-tarjeta-documento>
+    </div>
+
+  </div>
+
+  <app-barra-navegacion></app-barra-navegacion>
 </ion-content>

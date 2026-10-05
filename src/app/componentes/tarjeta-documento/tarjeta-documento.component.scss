@@ -1,0 +1,59 @@
+.tarjeta-documento {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 3vw, 12px);
+  background: #ffffff;
+  border: 1px solid #ececef;
+  border-radius: 16px;
+  padding: clamp(12px, 3.5vw, 16px);
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.icono-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f3f2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 19px;
+    color: #4b3fbf;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 140px;
+
+  .titulo {
+    font-weight: 600;
+    font-size: 14px;
+    color: #16151a;
+  }
+
+  .subtitulo {
+    font-size: 12px;
+    color: #6b6b70;
+    margin-top: 1px;
+  }
+
+  .vence {
+    font-size: 12px;
+    color: #8a8a8e;
+    margin-top: 2px;
+  }
+}
+
+ion-button {
+  --border-radius: 10px;
+  --border-color: #dcdce2;
+  --color: #16151a;
+  font-size: 12px;
+}

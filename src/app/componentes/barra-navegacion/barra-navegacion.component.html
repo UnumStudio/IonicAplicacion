@@ -1,0 +1,11 @@
+<nav class="barra-nav">
+  <a
+    *ngFor="let item of items"
+    [routerLink]="item.ruta"
+    routerLinkActive="activo"
+    class="item-nav"
+  >
+    <ion-icon [name]="item.icono"></ion-icon>
+    <span>{{ item.etiqueta }}</span>
+  </a>
+</nav>

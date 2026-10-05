@@ -1,0 +1,15 @@
+<div class="tarjeta-documento">
+  <div class="icono-wrap">
+    <ion-icon [name]="icono"></ion-icon>
+  </div>
+  <div class="info">
+    <span class="titulo">{{ documento.titulo }}</span>
+    <span class="subtitulo">{{ documento.subtitulo }}</span>
+    <span class="vence" *ngIf="documento.fechaVencimiento">
+      Vence: {{ documento.fechaVencimiento }}
+    </span>
+  </div>
+  <ion-button size="small" fill="outline" (click)="onVerDocumento()">
+    Ver PDF
+  </ion-button>
+</div>
