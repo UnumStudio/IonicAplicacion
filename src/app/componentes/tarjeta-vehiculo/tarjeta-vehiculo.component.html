@@ -1,0 +1,18 @@
+<div class="tarjeta-vehiculo" [class.activo]="activo" (click)="onSeleccionar()">
+  <img [src]="vehiculo.fotoUrl" [alt]="vehiculo.modelo" />
+
+  <div class="info">
+    <span class="titulo">{{ vehiculo.marca }} {{ vehiculo.modelo }}</span>
+    <span class="subtitulo">{{ vehiculo.anio }} · {{ vehiculo.patente }}</span>
+  </div>
+
+  <ion-icon
+    *ngIf="activo"
+    name="checkmark-circle"
+    class="icono-activo"
+  ></ion-icon>
+
+  <ion-button size="small" fill="clear" (click)="onEditar($event)">
+    <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+  </ion-button>
+</div>

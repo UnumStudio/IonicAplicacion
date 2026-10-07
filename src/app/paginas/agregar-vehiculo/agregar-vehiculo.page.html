@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
+
+    <div class="encabezado">
+      <h2>{{ modoEdicion() ? 'Editar vehículo' : 'Agregar vehículo' }}</h2>
+      <button class="boton-cerrar" (click)="cancelar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+    </div>
+
+    <form [formGroup]="formulario" (ngSubmit)="guardar()" class="formulario">
+      <div class="campo">
+        <label for="marca">Marca</label>
+        <ion-input
+          id="marca"
+          type="text"
+          formControlName="marca"
+          placeholder="Ej: Toyota"
+          fill="outline"
+        ></ion-input>
+      </div>
+
+      <div class="campo">
+        <label for="modelo">Modelo</label>
+        <ion-input
+          id="modelo"
+          type="text"
+          formControlName="modelo"
+          placeholder="Ej: Hilux"
+          fill="outline"
+        ></ion-input>
+      </div>
+
+      <div class="fila-doble">
+        <div class="campo">
+          <label for="anio">Año</label>
+          <ion-input
+            id="anio"
+            type="number"
+            formControlName="anio"
+            fill="outline"
+          ></ion-input>
+        </div>
+
+        <div class="campo">
+          <label for="patente">Patente</label>
+          <ion-input
+            id="patente"
+            type="text"
+            formControlName="patente"
+            placeholder="AE123CD"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="fotoUrl">Foto (ruta en assets)</label>
+        <ion-input
+          id="fotoUrl"
+          type="text"
+          formControlName="fotoUrl"
+          placeholder="assets/vehiculos/..."
+          fill="outline"
+        ></ion-input>
+        <span class="ayuda">
+          Por ahora solo podés usar imágenes que ya pusiste en
+          <code>src/assets/vehiculos</code>. Subir una foto desde el celular
+          es un paso que se suma después, con Capacitor Camera.
+        </span>
+      </div>
+
+      <ion-button type="submit" expand="block">
+        {{ modoEdicion() ? 'Guardar cambios' : 'Agregar vehículo' }}
+      </ion-button>
+    </form>
+
+  </div>
+</ion-content>

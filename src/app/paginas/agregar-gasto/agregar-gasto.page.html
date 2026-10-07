@@ -1,0 +1,71 @@
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
+
+    <div class="encabezado">
+      <h2>Agregar gasto</h2>
+      <button class="boton-cerrar" (click)="cancelar()">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div class="fila-categorias">
+      <button
+        *ngFor="let cat of categorias"
+        class="chip-categoria"
+        [class.activo]="categoriaSeleccionada === cat.valor"
+        (click)="seleccionarCategoria(cat.valor)"
+      >
+        {{ cat.etiqueta }}
+      </button>
+    </div>
+
+    <form [formGroup]="formulario" (ngSubmit)="guardar()" class="formulario">
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <ion-input
+          id="titulo"
+          type="text"
+          formControlName="titulo"
+          placeholder="Ej: Cambio de aceite"
+          fill="outline"
+        ></ion-input>
+        <span
+          class="error"
+          *ngIf="formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched"
+        >
+          Ingresá un título.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="monto">Monto</label>
+        <ion-input
+          id="monto"
+          type="number"
+          formControlName="monto"
+          placeholder="0"
+          fill="outline"
+        ></ion-input>
+        <span
+          class="error"
+          *ngIf="formulario.get('monto')?.invalid && formulario.get('monto')?.touched"
+        >
+          Ingresá un monto válido.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="fecha">Fecha</label>
+        <ion-input
+          id="fecha"
+          type="date"
+          formControlName="fecha"
+          fill="outline"
+        ></ion-input>
+      </div>
+
+      <ion-button type="submit" expand="block">Guardar gasto</ion-button>
+    </form>
+
+  </div>
+</ion-content>

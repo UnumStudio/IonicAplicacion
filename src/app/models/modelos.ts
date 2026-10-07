@@ -1,3 +1,13 @@
+export interface Usuario {
+  id: string;
+  nombre: string;
+  email: string;
+  // Mock de autenticación local: NUNCA guardar contraseñas así en un
+  // backend real. Esto es solo para probar el flujo de login/registro
+  // sin servidor todavía.
+  password: string;
+}
+
 export interface Vehiculo {
   id: string;
   marca: string;

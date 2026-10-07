@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
+
+    <div class="marca">
+      <ion-icon name="car-sport-outline"></ion-icon>
+      <h1>Creá tu cuenta</h1>
+      <p>Para empezar a registrar tus gastos y vehículos</p>
+    </div>
+
+    <form [formGroup]="formulario" (ngSubmit)="registrar()" class="formulario">
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <ion-input
+          id="nombre"
+          type="text"
+          formControlName="nombre"
+          placeholder="Tu nombre"
+          fill="outline"
+        ></ion-input>
+        <span
+          class="error"
+          *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
+        >
+          Ingresá tu nombre.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="email">Email</label>
+        <ion-input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="tu@email.com"
+          fill="outline"
+        ></ion-input>
+        <span
+          class="error"
+          *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched"
+        >
+          Ingresá un email válido.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="password">Contraseña</label>
+        <ion-input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="••••••••"
+          fill="outline"
+        ></ion-input>
+        <span
+          class="error"
+          *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched"
+        >
+          Mínimo 4 caracteres.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="confirmarPassword">Confirmar contraseña</label>
+        <ion-input
+          id="confirmarPassword"
+          type="password"
+          formControlName="confirmarPassword"
+          placeholder="••••••••"
+          fill="outline"
+        ></ion-input>
+        <span
+          class="error"
+          *ngIf="formulario.errors?.['noCoincide'] && formulario.get('confirmarPassword')?.touched"
+        >
+          Las contraseñas no coinciden.
+        </span>
+      </div>
+
+      <p class="error error-general" *ngIf="errorRegistro()">{{ errorRegistro() }}</p>
+
+      <ion-button type="submit" expand="block" [disabled]="enviando()">
+        Crear cuenta
+      </ion-button>
+    </form>
+
+    <p class="pie">
+      ¿Ya tenés cuenta?
+      <a routerLink="/paginas/login">Iniciá sesión</a>
+    </p>
+
+  </div>
+</ion-content>

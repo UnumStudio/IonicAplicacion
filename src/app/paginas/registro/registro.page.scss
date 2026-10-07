@@ -1,0 +1,93 @@
+.fondo {
+  --background: #f5f5f7;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: clamp(20px, 6vw, 32px);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.marca {
+  text-align: center;
+  margin-bottom: clamp(24px, 6vw, 36px);
+
+  ion-icon {
+    font-size: 44px;
+    color: #4b3fbf;
+  }
+
+  h1 {
+    font-size: clamp(22px, 6vw, 28px);
+    font-weight: 700;
+    margin: 10px 0 4px;
+    color: #16151a;
+  }
+
+  p {
+    font-size: 14px;
+    color: #6b6b70;
+    margin: 0;
+  }
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #16151a;
+  }
+
+  ion-input {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --padding-start: 14px;
+    --padding-end: 14px;
+  }
+}
+
+.error {
+  font-size: 12px;
+  color: #dc2626;
+}
+
+.error-general {
+  text-align: center;
+  margin: 0;
+}
+
+ion-button {
+  --border-radius: 12px;
+  --background: #4b3fbf;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.pie {
+  text-align: center;
+  font-size: 14px;
+  color: #6b6b70;
+  margin-top: clamp(20px, 5vw, 28px);
+
+  a {
+    color: #4b3fbf;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}

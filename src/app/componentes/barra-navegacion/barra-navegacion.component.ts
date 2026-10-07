@@ -23,7 +23,8 @@ export class BarraNavegacionComponent {
     { etiqueta: 'Inicio', icono: 'home-outline', ruta: '/paginas/inicio' },
     { etiqueta: 'Gastos', icono: 'cash-outline', ruta: '/paginas/gastos' },
     { etiqueta: 'Mapa', icono: 'map-outline', ruta: '/paginas/mapa' },
-    { etiqueta: 'Vehículo', icono: 'car-sport-outline', ruta: '/paginas/vehiculo' },
+    { etiqueta: 'Vehículos', icono: 'car-sport-outline', ruta: '/paginas/vehiculo' },
+    { etiqueta: 'Perfil', icono: 'person-circle-outline', ruta: '/paginas/vehiculo' },
   ];
 
   constructor() {

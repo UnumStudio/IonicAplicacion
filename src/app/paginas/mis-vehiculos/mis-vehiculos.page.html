@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
+
+    <div class="encabezado">
+      <h2>Mis Vehículos</h2>
+      <ion-button size="small" routerLink="/paginas/agregar-vehiculo">
+        <ion-icon slot="start" name="add-outline"></ion-icon>
+        Agregar
+      </ion-button>
+    </div>
+
+    <p class="ayuda">Tocá un vehículo para marcarlo como el activo.</p>
+
+    <div class="lista-vehiculos">
+      <app-tarjeta-vehiculo
+        *ngFor="let vehiculo of vehiculos()"
+        [vehiculo]="vehiculo"
+        [activo]="vehiculo.id === vehiculoActivo()?.id"
+        (seleccionar)="seleccionarActivo($event)"
+        (editar)="editarVehiculo($event)"
+      ></app-tarjeta-vehiculo>
+
+      <p class="vacio" *ngIf="vehiculos().length === 0">
+        Todavía no agregaste ningún vehículo.
+      </p>
+    </div>
+
+  </div>
+
+  <app-barra-navegacion></app-barra-navegacion>
+</ion-content>
