@@ -1,5 +1,5 @@
 .fondo {
-  --background: #f5f5f7;
+  --background: var(--app-bg);
 }
 
 .contenedor {
@@ -7,35 +7,35 @@
   max-width: 480px;
   margin: 0 auto;
   padding: clamp(12px, 4vw, 20px);
-  padding-bottom: 90px;
+  padding-bottom: 90px; // Espacio para la barra de navegación fija
   box-sizing: border-box;
 }
 
+// --- Encabezado: ícono + título + subtítulo ---
 .encabezado {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+  gap: 14px;
+  margin: 8px 0 20px;
 
-  h2 {
-    font-size: clamp(20px, 5vw, 26px);
-    font-weight: 700;
+  .icono-titulo {
+    font-size: clamp(38px, 11vw, 48px);
+    color: var(--app-text-primary);
+    flex-shrink: 0;
+  }
+
+  h1 {
     margin: 0;
+    font-size: clamp(24px, 7vw, 30px);
+    font-weight: 800;
+    color: var(--app-text-primary);
   }
 
-  ion-button {
-    --border-radius: 12px;
-    --background: #4b3fbf;
-    font-size: clamp(12px, 3vw, 14px);
+  p {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: var(--app-text-secondary);
   }
-}
-
-.ayuda {
-  font-size: 13px;
-  color: #6b6b70;
-  margin: 0 0 16px;
 }
 
 .lista-vehiculos {
@@ -45,9 +45,30 @@
 
 .vacio {
   text-align: center;
-  color: #8a8a8e;
+  color: var(--app-text-secondary);
   font-size: 14px;
-  margin-top: 40px;
+  margin: 40px 0;
+}
+
+// --- Botón "Agregar vehículo" (estilo outline) ---
+.boton-agregar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px;
+  background: var(--app-card-bg);
+  border: 1.5px solid #d5d9e5;
+  border-radius: var(--app-radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--app-primary);
+
+  ion-icon {
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 600px) {

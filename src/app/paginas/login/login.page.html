@@ -17,12 +17,9 @@
           placeholder="tu@email.com"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched"
-        >
-          Ingresá un email válido.
-        </span>
+        @if (formulario.get('email')?.invalid && formulario.get('email')?.touched) {
+          <span class="error">Ingresá un email válido.</span>
+        }
       </div>
 
       <div class="campo">
@@ -34,15 +31,14 @@
           placeholder="••••••••"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched"
-        >
-          Mínimo 4 caracteres.
-        </span>
+        @if (formulario.get('password')?.invalid && formulario.get('password')?.touched) {
+          <span class="error">Mínimo 4 caracteres.</span>
+        }
       </div>
 
-      <p class="error error-general" *ngIf="errorLogin()">{{ errorLogin() }}</p>
+      @if (errorLogin()) {
+        <p class="error error-general">{{ errorLogin() }}</p>
+      }
 
       <ion-button type="submit" expand="block" [disabled]="enviando()">
         Iniciar sesión

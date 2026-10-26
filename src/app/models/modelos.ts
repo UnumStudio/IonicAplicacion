@@ -8,6 +8,8 @@ export interface Usuario {
   password: string;
 }
 
+export type TipoCombustible = 'Nafta' | 'Diesel' | 'GNC' | 'Híbrido' | 'Eléctrico';
+
 export interface Vehiculo {
   id: string;
   marca: string;
@@ -15,6 +17,12 @@ export interface Vehiculo {
   anio: number;
   patente: string;
   fotoUrl: string;
+  // Datos opcionales: se muestran en la tarjeta de "Mis vehículos".
+  // Son opcionales para no romper vehículos guardados antes de agregarlos.
+  traccion?: string; // Ej: '4x2', '4x4'
+  combustible?: TipoCombustible;
+  nivelCombustible?: number; // Porcentaje del tanque, de 0 a 100
+  proximoServiceKm?: number; // Kilometraje en el que toca el próximo service
 }
 
 export type CategoriaGasto = 'nafta' | 'reparaciones' | 'seguro' | 'mantenimiento' | 'otro';
@@ -23,7 +31,7 @@ export interface Gasto {
   id: string;
   categoria: CategoriaGasto;
   titulo: string;
-  fecha: string; // ISO string
+  fecha: string; // Formato ISO (AAAA-MM-DD)
   monto: number;
 }
 

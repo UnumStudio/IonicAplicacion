@@ -1,18 +1,67 @@
-<div class="tarjeta-vehiculo" [class.activo]="activo" (click)="onSeleccionar()">
-  <img [src]="vehiculo.fotoUrl" [alt]="vehiculo.modelo" />
+﻿<article class="tarjeta" [class.activa]="activo" (click)="onSeleccionar()">
 
-  <div class="info">
-    <span class="titulo">{{ vehiculo.marca }} {{ vehiculo.modelo }}</span>
-    <span class="subtitulo">{{ vehiculo.anio }} · {{ vehiculo.patente }}</span>
+  <!-- Foto + datos principales -->
+  <div class="principal">
+    <img
+      class="foto"
+      [src]="vehiculo.fotoUrl"
+      [alt]="'Ver detalle de ' + vehiculo.marca + ' ' + vehiculo.modelo"
+      (click)="onVerDetalle($event)"
+    />
+
+    <div class="datos">
+      <h3 class="nombre">{{ vehiculo.marca }} {{ vehiculo.modelo }}</h3>
+
+      <div class="fila-patente">
+        <span class="patente">{{ vehiculo.patente }}</span>
+        @if (activo) {
+          <span class="etiqueta-activo">Activo</span>
+        }
+      </div>
+
+      <span class="detalle">{{ detalle }}</span>
+    </div>
+
+    <button
+      type="button"
+      class="boton-editar"
+      aria-label="Editar vehículo"
+      (click)="onEditar($event)"
+    >
+      <ion-icon name="pencil-outline"></ion-icon>
+    </button>
   </div>
 
-  <ion-icon
-    *ngIf="activo"
-    name="checkmark-circle"
-    class="icono-activo"
-  ></ion-icon>
+  <!-- Indicadores: combustible y próximo service -->
+  <div class="indicadores">
+    <div class="indicador">
+      <div class="indicador-fila">
+        <ion-icon name="water-outline" class="indicador-icono"></ion-icon>
+        <div class="indicador-texto">
+          <span class="indicador-etiqueta">Combustible</span>
+          <span class="indicador-valor">{{ nivelCombustibleTexto }}</span>
+        </div>
+      </div>
+      <div class="barra">
+        <div
+          class="barra-relleno"
+          [class.bajo]="combustibleBajo"
+          [style.width.%]="nivelCombustible ?? 0"
+        ></div>
+      </div>
+    </div>
 
-  <ion-button size="small" fill="clear" (click)="onEditar($event)">
-    <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
-  </ion-button>
-</div>
+    <div class="indicador">
+      <div class="indicador-fila">
+        <ion-icon name="build-outline" class="indicador-icono"></ion-icon>
+        <div class="indicador-texto">
+          <span class="indicador-etiqueta">Próximo service</span>
+          <span class="indicador-valor">{{ proximoServiceFormateado }}</span>
+        </div>
+        <ion-icon name="chevron-forward" class="indicador-flecha"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+</article>
+

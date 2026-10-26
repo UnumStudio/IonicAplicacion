@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonButton, IonInput, IonIcon } from '@ionic/angular';
 import { addIcons } from 'ionicons';
@@ -9,10 +8,8 @@ import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
+    RouterLink,
     ReactiveFormsModule,
     IonContent,
     IonButton,

@@ -68,7 +68,8 @@
     color: #16151a;
   }
 
-  ion-input {
+  ion-input,
+  ion-select {
     --background: #ffffff;
     --border-radius: 12px;
     --padding-start: 14px;
@@ -92,4 +93,10 @@ ion-button {
   --background: #4b3fbf;
   margin-top: 8px;
   font-weight: 600;
+}
+
+// El botón de eliminar es "outline" rojo: pisa el fondo violeta del botón principal
+ion-button.boton-eliminar {
+  --background: transparent;
+  margin-top: 0;
 }

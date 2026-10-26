@@ -3,29 +3,20 @@
 
     <!-- Header -->
     <div class="encabezado">
-      <h2>Hola, {{ nombreUsuario }} </h2>
+      <h2>Hola, {{ nombreUsuario() }}</h2>
     </div>
 
     <!-- Vehículo -->
-    <div
-      class="tarjeta-vehiculo"
-      routerLink="/paginas/vehiculo">
+    @if (vehiculo(); as v) {
+      <div class="tarjeta-vehiculo" routerLink="/paginas/vehiculo">
+        <div class="texto">
+          <h3>Mi vehículo</h3>
+          <p>{{ v.marca }} {{ v.modelo }} {{ v.anio }}</p>
+        </div>
 
-      <div class="texto">
-        <h3>Mi vehículo</h3>
-
-        <p>
-          {{ vehiculo.marca }}
-          {{ vehiculo.modelo }}
-          {{ vehiculo.anio }}
-        </p>
+        <img [src]="v.fotoUrl" [alt]="v.marca + ' ' + v.modelo" />
       </div>
-
-      <img
-        [src]="vehiculo.fotoUrl"
-        [alt]="vehiculo.marca + ' ' + vehiculo.modelo" />
-
-    </div>
+    }
 
     <!-- Gastos -->
     <div class="tarjeta-blanca">
@@ -41,12 +32,13 @@
       <div class="contenido-gastos">
 
         <div class="mini-grafico">
-          <div
-            *ngFor="let altura of barrasGastos; let i = index"
-            class="barra"
-            [class.activa]="i === barrasGastos.length - 2"
-            [style.height.%]="altura * 100">
-          </div>
+          @for (altura of barrasGastos; track $index) {
+            <div
+              class="barra"
+              [class.activa]="$index === barrasGastos.length - 2"
+              [style.height.%]="altura * 100">
+            </div>
+          }
         </div>
 
         <div class="estadistica">

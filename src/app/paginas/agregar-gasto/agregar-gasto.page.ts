@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonButton, IonInput, IonIcon } from '@ionic/angular';
 import { addIcons } from 'ionicons';
@@ -15,10 +14,7 @@ interface OpcionCategoria {
 
 @Component({
   selector: 'app-agregar-gasto',
-  standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     ReactiveFormsModule,
     IonContent,
     IonButton,

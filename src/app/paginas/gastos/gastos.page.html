@@ -10,25 +10,23 @@
     </div>
 
     <div class="fila-filtros">
-      <button
-        *ngFor="let filtro of filtros"
-        class="chip-filtro"
-        [class.activo]="filtroActivo === filtro.valor"
-        (click)="seleccionarFiltro(filtro.valor)"
-      >
-        {{ filtro.etiqueta }}
-      </button>
+      @for (filtro of filtros; track filtro.valor) {
+        <button
+          class="chip-filtro"
+          [class.activo]="filtroActivo === filtro.valor"
+          (click)="seleccionarFiltro(filtro.valor)"
+        >
+          {{ filtro.etiqueta }}
+        </button>
+      }
     </div>
 
     <div class="lista-gastos">
-      <app-tarjeta-gasto
-        *ngFor="let gasto of gastosFiltrados"
-        [gasto]="gasto"
-      ></app-tarjeta-gasto>
-
-      <p class="vacio" *ngIf="gastosFiltrados.length === 0">
-        No hay gastos en esta categoría todavía.
-      </p>
+      @for (gasto of gastosFiltrados; track gasto.id) {
+        <app-tarjeta-gasto [gasto]="gasto"></app-tarjeta-gasto>
+      } @empty {
+        <p class="vacio">No hay gastos en esta categoría todavía.</p>
+      }
     </div>
 
   </div>

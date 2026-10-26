@@ -11,14 +11,15 @@
     </div>
 
     <div class="fila-categorias">
-      <button
-        *ngFor="let cat of categorias"
-        class="chip-categoria"
-        [class.activo]="categoriaActiva === cat.valor"
-        (click)="seleccionarCategoria(cat.valor)"
-      >
-        {{ cat.etiqueta }}
-      </button>
+      @for (cat of categorias; track cat.valor) {
+        <button
+          class="chip-categoria"
+          [class.activo]="categoriaActiva === cat.valor"
+          (click)="seleccionarCategoria(cat.valor)"
+        >
+          {{ cat.etiqueta }}
+        </button>
+      }
     </div>
   </div>
 

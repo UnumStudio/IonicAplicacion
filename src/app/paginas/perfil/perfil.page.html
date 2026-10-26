@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="contenedor">
+
+    <h1 class="titulo-pagina">Mi perfil</h1>
+
+    @if (usuario(); as u) {
+      <!-- Avatar + nombre -->
+      <section class="cabecera">
+        <div class="avatar">{{ iniciales() }}</div>
+        <h2 class="nombre">{{ u.nombre }}</h2>
+        <span class="email">{{ u.email }}</span>
+      </section>
+
+      <!-- Datos de la cuenta -->
+      <section class="tarjeta-datos">
+        <div class="dato">
+          <ion-icon name="person-outline"></ion-icon>
+          <div class="dato-texto">
+            <span class="dato-etiqueta">Nombre</span>
+            <span class="dato-valor">{{ u.nombre }}</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <ion-icon name="mail-outline"></ion-icon>
+          <div class="dato-texto">
+            <span class="dato-etiqueta">Correo electrónico</span>
+            <span class="dato-valor">{{ u.email }}</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <ion-icon name="car-outline"></ion-icon>
+          <div class="dato-texto">
+            <span class="dato-etiqueta">Vehículos registrados</span>
+            <span class="dato-valor">{{ cantidadVehiculos() }}</span>
+          </div>
+        </div>
+      </section>
+
+      <p class="aviso">
+        Por ahora tus datos se guardan solo en este dispositivo, sin base de datos.
+      </p>
+
+      <ion-button expand="block" fill="outline" color="danger" (click)="cerrarSesion()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    }
+
+  </div>
+
+  <app-barra-navegacion></app-barra-navegacion>
+</ion-content>

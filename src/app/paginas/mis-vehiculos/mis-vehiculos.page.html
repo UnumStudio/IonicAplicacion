@@ -1,29 +1,32 @@
 <ion-content [fullscreen]="true" class="fondo">
   <div class="contenedor">
 
-    <div class="encabezado">
-      <h2>Mis Vehículos</h2>
-      <ion-button size="small" routerLink="/paginas/agregar-vehiculo">
-        <ion-icon slot="start" name="add-outline"></ion-icon>
-        Agregar
-      </ion-button>
-    </div>
-
-    <p class="ayuda">Tocá un vehículo para marcarlo como el activo.</p>
+    <header class="encabezado">
+      <ion-icon name="car-outline" class="icono-titulo"></ion-icon>
+      <div>
+        <h1>Mis vehículos</h1>
+        <p>Gestioná y consultá tus vehículos</p>
+      </div>
+    </header>
 
     <div class="lista-vehiculos">
-      <app-tarjeta-vehiculo
-        *ngFor="let vehiculo of vehiculos()"
-        [vehiculo]="vehiculo"
-        [activo]="vehiculo.id === vehiculoActivo()?.id"
-        (seleccionar)="seleccionarActivo($event)"
-        (editar)="editarVehiculo($event)"
-      ></app-tarjeta-vehiculo>
-
-      <p class="vacio" *ngIf="vehiculos().length === 0">
-        Todavía no agregaste ningún vehículo.
-      </p>
+      @for (vehiculo of vehiculos(); track vehiculo.id) {
+        <app-tarjeta-vehiculo
+          [vehiculo]="vehiculo"
+          [activo]="vehiculo.id === vehiculoActivo()?.id"
+          (seleccionar)="seleccionarActivo($event)"
+          (verDetalle)="verDetalle($event)"
+          (editar)="editarVehiculo($event)"
+        ></app-tarjeta-vehiculo>
+      } @empty {
+        <p class="vacio">Todavía no agregaste ningún vehículo.</p>
+      }
     </div>
+
+    <button type="button" class="boton-agregar" routerLink="/paginas/agregar-vehiculo">
+      <ion-icon name="add-outline"></ion-icon>
+      Agregar vehículo
+    </button>
 
   </div>
 

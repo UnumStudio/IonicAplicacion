@@ -1,8 +1,9 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { CategoriaGasto, Gasto } from '../models/modelos';
+import { Gasto } from '../models/modelos';
 
 const CLAVE_GASTOS = 'vehiculo-app:gastos';
 
+// Gastos de ejemplo: se usan solo mientras no haya nada guardado.
 const GASTOS_DEMO: Gasto[] = [
   { id: '1', categoria: 'nafta', titulo: 'Nafta', fecha: '2026-05-24', monto: 35000 },
   { id: '2', categoria: 'mantenimiento', titulo: 'Cambio de aceite', fecha: '2026-05-17', monto: 28000 },
@@ -19,6 +20,7 @@ export class GastosService {
     [...this._gastos()].sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
   );
 
+  // Todavía no se muestra en Inicio (ahí el monto es de ejemplo); queda listo para conectarlo.
   readonly totalDelMes = computed(() => {
     const ahora = new Date();
     const mesActual = ahora.getMonth();
@@ -26,7 +28,7 @@ export class GastosService {
 
     return this._gastos()
       .filter((g) => {
-        const fecha = new Date(g.fecha);
+        const fecha = new Date(`${g.fecha}T00:00:00`); // fecha local, no UTC
         return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
       })
       .reduce((total, g) => total + g.monto, 0);
@@ -36,13 +38,6 @@ export class GastosService {
     const nuevo: Gasto = { ...datos, id: crypto.randomUUID() };
     this._gastos.update((lista) => [...lista, nuevo]);
     this.guardarGastos();
-  }
-
-  obtenerPorCategoria(categoria: CategoriaGasto | 'todos'): Gasto[] {
-    if (categoria === 'todos') {
-      return this.gastos();
-    }
-    return this.gastos().filter((g) => g.categoria === categoria);
   }
 
   private guardarGastos(): void {

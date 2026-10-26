@@ -17,12 +17,9 @@
           placeholder="Tu nombre"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
-        >
-          Ingresá tu nombre.
-        </span>
+        @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+          <span class="error">Ingresá tu nombre.</span>
+        }
       </div>
 
       <div class="campo">
@@ -34,12 +31,9 @@
           placeholder="tu@email.com"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched"
-        >
-          Ingresá un email válido.
-        </span>
+        @if (formulario.get('email')?.invalid && formulario.get('email')?.touched) {
+          <span class="error">Ingresá un email válido.</span>
+        }
       </div>
 
       <div class="campo">
@@ -51,12 +45,9 @@
           placeholder="••••••••"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched"
-        >
-          Mínimo 4 caracteres.
-        </span>
+        @if (formulario.get('password')?.invalid && formulario.get('password')?.touched) {
+          <span class="error">Mínimo 4 caracteres.</span>
+        }
       </div>
 
       <div class="campo">
@@ -68,15 +59,14 @@
           placeholder="••••••••"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.errors?.['noCoincide'] && formulario.get('confirmarPassword')?.touched"
-        >
-          Las contraseñas no coinciden.
-        </span>
+        @if (formulario.errors?.['noCoincide'] && formulario.get('confirmarPassword')?.touched) {
+          <span class="error">Las contraseñas no coinciden.</span>
+        }
       </div>
 
-      <p class="error error-general" *ngIf="errorRegistro()">{{ errorRegistro() }}</p>
+      @if (errorRegistro()) {
+        <p class="error error-general">{{ errorRegistro() }}</p>
+      }
 
       <ion-button type="submit" expand="block" [disabled]="enviando()">
         Crear cuenta

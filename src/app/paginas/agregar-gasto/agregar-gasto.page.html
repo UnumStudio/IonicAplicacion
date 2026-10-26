@@ -9,14 +9,15 @@
     </div>
 
     <div class="fila-categorias">
-      <button
-        *ngFor="let cat of categorias"
-        class="chip-categoria"
-        [class.activo]="categoriaSeleccionada === cat.valor"
-        (click)="seleccionarCategoria(cat.valor)"
-      >
-        {{ cat.etiqueta }}
-      </button>
+      @for (cat of categorias; track cat.valor) {
+        <button
+          class="chip-categoria"
+          [class.activo]="categoriaSeleccionada === cat.valor"
+          (click)="seleccionarCategoria(cat.valor)"
+        >
+          {{ cat.etiqueta }}
+        </button>
+      }
     </div>
 
     <form [formGroup]="formulario" (ngSubmit)="guardar()" class="formulario">
@@ -29,12 +30,9 @@
           placeholder="Ej: Cambio de aceite"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched"
-        >
-          Ingresá un título.
-        </span>
+        @if (formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched) {
+          <span class="error">Ingresá un título.</span>
+        }
       </div>
 
       <div class="campo">
@@ -46,12 +44,9 @@
           placeholder="0"
           fill="outline"
         ></ion-input>
-        <span
-          class="error"
-          *ngIf="formulario.get('monto')?.invalid && formulario.get('monto')?.touched"
-        >
-          Ingresá un monto válido.
-        </span>
+        @if (formulario.get('monto')?.invalid && formulario.get('monto')?.touched) {
+          <span class="error">Ingresá un monto válido.</span>
+        }
       </div>
 
       <div class="campo">

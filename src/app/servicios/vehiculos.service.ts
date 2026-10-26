@@ -4,6 +4,7 @@ import { Vehiculo } from '../models/modelos';
 const CLAVE_VEHICULOS = 'vehiculo-app:vehiculos';
 const CLAVE_ACTIVO = 'vehiculo-app:vehiculo-activo-id';
 
+// Vehículo de ejemplo: se usa solo mientras no haya nada guardado.
 const VEHICULOS_DEMO: Vehiculo[] = [
   {
     id: '1',
@@ -12,6 +13,10 @@ const VEHICULOS_DEMO: Vehiculo[] = [
     anio: 2018,
     patente: 'AE123CD',
     fotoUrl: 'assets/vehiculos/hilux.png',
+    traccion: '4x4',
+    combustible: 'Diesel',
+    nivelCombustible: 68,
+    proximoServiceKm: 12000,
   },
 ];
 
@@ -53,6 +58,18 @@ export class VehiculosService {
       lista.map((v) => (v.id === id ? { ...v, ...datos } : v))
     );
     this.guardarVehiculos();
+  }
+
+  eliminarVehiculo(id: string): void {
+    this._vehiculos.update((lista) => lista.filter((v) => v.id !== id));
+    this.guardarVehiculos();
+
+    // Si era el activo, se limpia la selección: `vehiculoActivo` vuelve a
+    // caer en el primero de la lista (o en ninguno si no queda ninguno).
+    if (this._vehiculoActivoId() === id) {
+      this._vehiculoActivoId.set(null);
+      localStorage.removeItem(CLAVE_ACTIVO);
+    }
   }
 
   seleccionarActivo(id: string): void {

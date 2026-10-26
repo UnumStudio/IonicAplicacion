@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { IonIcon } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { waterOutline, constructOutline, shieldCheckmarkOutline, buildOutline, pricetagOutline } from 'ionicons/icons';
@@ -7,8 +6,7 @@ import { Gasto, CategoriaGasto } from '../../models/modelos';
 
 @Component({
   selector: 'app-tarjeta-gasto',
-  standalone: true,
-  imports: [CommonModule, IonIcon],
+  imports: [IonIcon],
   templateUrl: './tarjeta-gasto.component.html',
   styleUrls: ['./tarjeta-gasto.component.scss'],
 })
@@ -44,7 +42,9 @@ export class TarjetaGastoComponent {
   }
 
   get fechaFormateada(): string {
-    const fecha = new Date(this.gasto.fecha);
+    // Se agrega la hora para que "2026-05-24" se lea como fecha local
+    // (sin esto en Argentina se mostraría el día anterior).
+    const fecha = new Date(`${this.gasto.fecha}T00:00:00`);
     return fecha.toLocaleDateString('es-AR', { day: '2-digit', month: 'long' });
   }
 

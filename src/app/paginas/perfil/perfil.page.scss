@@ -1,0 +1,119 @@
+.fondo {
+  --background: var(--app-bg);
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: clamp(12px, 4vw, 20px);
+  padding-bottom: 90px; // Espacio para la barra de navegación fija
+  box-sizing: border-box;
+}
+
+.titulo-pagina {
+  margin: 8px 0 20px;
+  font-size: clamp(24px, 7vw, 30px);
+  font-weight: 800;
+  color: var(--app-text-primary);
+}
+
+// --- Avatar + nombre ---
+.cabecera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: var(--app-primary);
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nombre {
+  margin: 0;
+  font-size: clamp(20px, 5.5vw, 24px);
+  font-weight: 700;
+  color: var(--app-text-primary);
+  text-align: center;
+}
+
+.email {
+  font-size: 14px;
+  color: var(--app-text-secondary);
+  word-break: break-all;
+  text-align: center;
+}
+
+// --- Datos de la cuenta ---
+.tarjeta-datos {
+  background: var(--app-card-bg);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-card-shadow);
+  overflow: hidden;
+}
+
+.dato {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+
+  & + & {
+    border-top: 1px solid #eceef4;
+  }
+
+  ion-icon {
+    font-size: 22px;
+    color: var(--app-primary);
+    flex-shrink: 0;
+  }
+}
+
+.dato-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dato-etiqueta {
+  font-size: 12px;
+  color: var(--app-text-secondary);
+}
+
+.dato-valor {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--app-text-primary);
+  word-break: break-word;
+}
+
+.aviso {
+  margin: 14px 4px 20px;
+  font-size: 12px;
+  color: var(--app-text-secondary);
+  text-align: center;
+}
+
+ion-button {
+  --border-radius: var(--app-radius-sm);
+  font-weight: 600;
+}
+
+@media (min-width: 600px) {
+  .contenedor {
+    max-width: 600px;
+  }
+}

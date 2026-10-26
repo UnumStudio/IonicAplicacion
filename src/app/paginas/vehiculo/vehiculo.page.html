@@ -3,27 +3,30 @@
 
     <h2 class="titulo-pagina">Vehículo Detallado</h2>
 
-    <div class="tarjeta-foto">
-      <img [src]="vehiculo.fotoUrl" [alt]="vehiculo.modelo" />
-    </div>
-
-    <!-- Placa estilo cédula -->
-    <div class="placa">
-      <div class="placa-encabezado">
-        <span class="pais">REPUBLICA ARGENTINA</span>
-        <span class="bandera">🇦🇷</span>
+    @if (vehiculo(); as v) {
+      <div class="tarjeta-foto">
+        <img [src]="v.fotoUrl" [alt]="v.modelo" />
       </div>
-      <span class="patente">{{ patenteFormateada }}</span>
-    </div>
+
+      <!-- Placa estilo cédula -->
+      <div class="placa">
+        <div class="placa-encabezado">
+          <span class="pais">REPUBLICA ARGENTINA</span>
+          <span class="bandera">🇦🇷</span>
+        </div>
+        <span class="patente">{{ patenteFormateada() }}</span>
+      </div>
+    }
 
     <h3 class="subtitulo">Identificación Legal</h3>
 
     <div class="lista-documentos">
-      <app-tarjeta-documento
-        *ngFor="let doc of documentos"
-        [documento]="doc"
-        (verDocumento)="abrirDocumento($event)"
-      ></app-tarjeta-documento>
+      @for (doc of documentos; track doc.id) {
+        <app-tarjeta-documento
+          [documento]="doc"
+          (verDocumento)="abrirDocumento($event)"
+        ></app-tarjeta-documento>
+      }
     </div>
 
   </div>

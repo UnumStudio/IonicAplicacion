@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonIcon } from '@ionic/angular';
 import { addIcons } from 'ionicons';
@@ -15,12 +14,12 @@ interface CategoriaMapa {
 
 @Component({
   selector: 'app-mapa',
-  standalone: true,
-  imports: [CommonModule, FormsModule, IonContent, IonIcon, BarraNavegacionComponent],
+  imports: [FormsModule, IonContent, IonIcon, BarraNavegacionComponent],
   templateUrl: './mapa.page.html',
   styleUrls: ['./mapa.page.scss'],
 })
 export class MapaPage implements AfterViewInit, OnDestroy {
+  // Texto del buscador. Pendiente: todavía no filtra los lugares.
   textoBusqueda = '';
 
   categorias: CategoriaMapa[] = [

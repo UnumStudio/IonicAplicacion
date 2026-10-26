@@ -1,54 +1,166 @@
-.tarjeta-vehiculo {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 3vw, 14px);
-  background: #ffffff;
-  border: 2px solid transparent;
-  border-radius: 16px;
-  padding: clamp(10px, 3vw, 14px);
-  margin-bottom: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+.tarjeta {
+  background: var(--app-card-bg);
+  border: 1.5px solid #e6e8ef;
+  border-radius: var(--app-radius-md);
+  padding: clamp(12px, 3.5vw, 16px);
+  margin-bottom: 14px;
+  box-shadow: var(--app-card-shadow);
   cursor: pointer;
 
-  &.activo {
-    border-color: #4b3fbf;
+  // El vehículo activo se distingue con el borde del color principal
+  &.activa {
+    border-color: var(--app-primary);
   }
+}
+
+// --- Foto + datos principales ---
+.principal {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 3vw, 16px);
 
   img {
-    width: clamp(56px, 16vw, 72px);
-    height: clamp(56px, 16vw, 72px);
+    width: clamp(92px, 28vw, 128px);
+    height: clamp(62px, 19vw, 86px);
     object-fit: contain;
     flex-shrink: 0;
   }
 
-  .info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-
-    .titulo {
-      font-weight: 600;
-      font-size: clamp(14px, 3.5vw, 15px);
-      color: #16151a;
-    }
-
-    .subtitulo {
-      font-size: clamp(12px, 3vw, 13px);
-      color: #6b6b70;
-      margin-top: 2px;
-    }
+  // La foto es tocable: abre la información detallada del vehículo
+  .foto {
+    cursor: pointer;
   }
+}
 
-  .icono-activo {
-    font-size: 22px;
-    color: #4b3fbf;
-    flex-shrink: 0;
+.datos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.nombre {
+  margin: 0;
+  font-size: clamp(16px, 4.4vw, 18px);
+  font-weight: 700;
+  color: var(--app-text-primary);
+}
+
+.fila-patente {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.patente {
+  background: #eef0f6;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--app-text-primary);
+}
+
+.etiqueta-activo {
+  background: var(--app-primary);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.detalle {
+  font-size: 13px;
+  color: var(--app-text-secondary);
+}
+
+.boton-editar {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  background: none;
+  border: none;
+  color: var(--app-text-secondary);
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 20px;
   }
+}
 
-  ion-button {
-    --color: #6b6b70;
-    flex-shrink: 0;
-    margin: 0;
+// --- Indicadores (combustible / próximo service) ---
+.indicadores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.indicador {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  background: #f7f8fb;
+  border: 1px solid #e8eaf1;
+  border-radius: var(--app-radius-sm);
+  padding: 10px 12px;
+  min-width: 0;
+}
+
+.indicador-fila {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.indicador-icono {
+  font-size: 20px;
+  color: var(--app-text-primary);
+  flex-shrink: 0;
+}
+
+.indicador-texto {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.indicador-etiqueta {
+  font-size: 11px;
+  color: var(--app-text-secondary);
+}
+
+.indicador-valor {
+  font-size: clamp(13px, 3.6vw, 15px);
+  font-weight: 600;
+  color: var(--app-text-primary);
+}
+
+.indicador-flecha {
+  font-size: 16px;
+  color: var(--app-text-secondary);
+  flex-shrink: 0;
+}
+
+.barra {
+  height: 5px;
+  background: #e1e4ec;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-relleno {
+  height: 100%;
+  background: var(--app-primary);
+  border-radius: 999px;
+
+  &.bajo {
+    background: var(--app-maint-icon);
   }
 }

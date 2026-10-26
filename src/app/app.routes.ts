@@ -72,6 +72,13 @@ export const routes: Routes = [
       ),
   },
 
+  {
+    path: 'paginas/perfil',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./paginas/perfil/perfil.page').then((m) => m.PerfilPage),
+  },
+
   // Pendiente: regenerar con "ionic g page paginas/notificaciones" y
   // descomentar acá cuando la retomen.
   // {

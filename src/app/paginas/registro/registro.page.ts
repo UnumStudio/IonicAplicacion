@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   AbstractControl,
   FormBuilder,
@@ -23,10 +22,8 @@ function contraseniasIguales(control: AbstractControl): ValidationErrors | null 
 
 @Component({
   selector: 'app-registro',
-  standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
+    RouterLink,
     ReactiveFormsModule,
     IonContent,
     IonButton,

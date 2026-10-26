@@ -54,6 +54,62 @@
         </div>
       </div>
 
+      <div class="fila-doble">
+        <div class="campo">
+          <label for="combustible">Tipo de combustible</label>
+          <ion-select
+            id="combustible"
+            formControlName="combustible"
+            placeholder="Seleccioná"
+            interface="popover"
+            fill="outline"
+          >
+            @for (tipo of tiposCombustible; track tipo) {
+              <ion-select-option [value]="tipo">{{ tipo }}</ion-select-option>
+            }
+          </ion-select>
+        </div>
+
+        <div class="campo">
+          <label for="traccion">Tracción</label>
+          <ion-select
+            id="traccion"
+            formControlName="traccion"
+            placeholder="Seleccioná"
+            interface="popover"
+            fill="outline"
+          >
+            @for (traccion of tracciones; track traccion) {
+              <ion-select-option [value]="traccion">{{ traccion }}</ion-select-option>
+            }
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="fila-doble">
+        <div class="campo">
+          <label for="nivelCombustible">Combustible (%)</label>
+          <ion-input
+            id="nivelCombustible"
+            type="number"
+            formControlName="nivelCombustible"
+            placeholder="Ej: 68"
+            fill="outline"
+          ></ion-input>
+        </div>
+
+        <div class="campo">
+          <label for="proximoServiceKm">Próximo service (km)</label>
+          <ion-input
+            id="proximoServiceKm"
+            type="number"
+            formControlName="proximoServiceKm"
+            placeholder="Ej: 12000"
+            fill="outline"
+          ></ion-input>
+        </div>
+      </div>
+
       <div class="campo">
         <label for="fotoUrl">Foto (ruta en assets)</label>
         <ion-input
@@ -73,6 +129,20 @@
       <ion-button type="submit" expand="block">
         {{ modoEdicion() ? 'Guardar cambios' : 'Agregar vehículo' }}
       </ion-button>
+
+      @if (modoEdicion()) {
+        <ion-button
+          type="button"
+          class="boton-eliminar"
+          expand="block"
+          fill="outline"
+          color="danger"
+          (click)="eliminar()"
+        >
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Eliminar vehículo
+        </ion-button>
+      }
     </form>
 
   </div>
